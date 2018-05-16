@@ -23,7 +23,9 @@
   "typings": "./lib/create-typescript.d.ts",
   "files": [
     "bin/*",
-    "lib/*"
+    "lib/*",
+    "template/*",
+    "tsconfig.json"
   ],
   "scripts": {
     "clean": "rimraf lib",
