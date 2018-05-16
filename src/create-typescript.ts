@@ -8,6 +8,7 @@ import * as writePkg from "write-pkg";
 
 const dependencies = [
   "typescript",
+  "tslint",
 ];
 
 const isWin = process.platform === "win32";
