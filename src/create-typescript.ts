@@ -72,8 +72,8 @@ async function initPackage(bin: string, cwd: string): Promise<void> {
 
 async function installDependencies(bin: string, cwd: string): Promise<void> {
   const args = bin === "yarn"
-    ? ["add", dependencies]
-    : ["i", "--save", dependencies];
+    ? ["add", ...dependencies]
+    : ["i", "--save", ...dependencies];
 
   await execa(
     bin,
