@@ -22,8 +22,8 @@
   "main": "./lib/create-typescript.js",
   "typings": "./lib/create-typescript.d.ts",
   "files": [
-    "./bin/*",
-    "./lib/*"
+    "bin/*",
+    "lib/*"
   ],
   "scripts": {
     "clean": "rimraf lib",
