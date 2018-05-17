@@ -10,7 +10,7 @@
     "url": "https://igloo.be"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "keywords": [
     "yarn",
