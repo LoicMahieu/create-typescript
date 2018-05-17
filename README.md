@@ -1,5 +1,7 @@
 # create-typescript
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/LoicMahieu/create-typescript.svg)](https://greenkeeper.io/)
+
 A package initialization template for [`typescript`](https://github.com/Microsoft/TypeScript).
 
 ```sh
