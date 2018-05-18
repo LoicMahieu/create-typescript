@@ -6,7 +6,8 @@ import * as path from "path";
 import * as readPkg from "read-pkg";
 import * as writePkg from "write-pkg";
 
-const dependencies = [
+const dependencies: string[] = [];
+const devDependencies: string[] = [
   "typescript",
   "tslint",
 ];
@@ -24,7 +25,8 @@ const npmJsRegExp = isWin
 export async function install(cwd: string): Promise<void> {
   const bin = await findBin();
   await initPackage(bin, cwd);
-  await installDependencies(bin, cwd);
+  await installDependencies(dependencies, bin, cwd);
+  await installDependencies(devDependencies, bin, cwd);
   await writePackageScripts(cwd);
   await initFiles(cwd);
 }
@@ -70,11 +72,14 @@ async function initPackage(bin: string, cwd: string): Promise<void> {
   await execa(bin, binArgs, { cwd, stdio: "inherit" });
 }
 
-async function installDependencies(bin: string, cwd: string): Promise<void> {
-  const args = bin === "yarn"
-    ? ["add", ...dependencies]
-    : ["i", "--save", ...dependencies];
+async function installDependencies(deps: string[], bin: string, cwd: string, isDev: boolean = false): Promise<void> {
+  if (deps.length <= 0) {
+    return;
+  }
 
+  const args = bin === "yarn"
+    ? ["add", isDev && "--dev", ...deps].filter(Boolean)
+    : ["i", isDev ? "--save-dev" : "--save", ...deps];
   await execa(
     bin,
     args as ReadonlyArray<string>,
